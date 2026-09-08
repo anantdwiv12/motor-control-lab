@@ -1,0 +1,142 @@
+{
+  "python": "3.9.6",
+  "scipy": "1.13.1",
+  "seed": 7,
+  "dt_s": 0.005,
+  "duration_s": 5.0,
+  "baseline_gains": [
+    10.0,
+    10.0
+  ],
+  "tuned_gains": [
+    60.73454666089994,
+    136.87661875517057
+  ],
+  "optimizer_success": true,
+  "optimizer_message": "Optimization terminated successfully.",
+  "objective_evaluations": 24,
+  "training_score": {
+    "baseline": 1.091701053282598,
+    "tuned": 0.3496835146031789
+  },
+  "held_out_score": {
+    "baseline": 1.3244965298769935,
+    "tuned": 0.35816690678841834
+  },
+  "scenarios": {
+    "nominal": {
+      "split": "train",
+      "baseline": {
+        "iae_rad": 0.9584449572135171,
+        "voltage_effort_V2s": 430.5616014371407,
+        "overshoot_rad_s": 0.0,
+        "final_error_rad_s": 0.024143861451620285,
+        "peak_current_A": 9.773114122704106,
+        "saturation_fraction": 0.0
+      },
+      "tuned": {
+        "iae_rad": 0.25539894193814544,
+        "voltage_effort_V2s": 628.197058692942,
+        "overshoot_rad_s": 0.0,
+        "final_error_rad_s": 3.5049655371377497e-06,
+        "peak_current_A": 10.691615211964367,
+        "saturation_fraction": 0.049
+      }
+    },
+    "load": {
+      "split": "train",
+      "baseline": {
+        "iae_rad": 1.1728692775218017,
+        "voltage_effort_V2s": 568.9425357807077,
+        "overshoot_rad_s": 0.0,
+        "final_error_rad_s": 0.0455877264384803,
+        "peak_current_A": 12.071600941320334,
+        "saturation_fraction": 0.0
+      },
+      "tuned": {
+        "iae_rad": 0.28701295678453986,
+        "voltage_effort_V2s": 831.5431022118312,
+        "overshoot_rad_s": 0.03186433685412271,
+        "final_error_rad_s": 3.906175642054421e-06,
+        "peak_current_A": 13.085964859628287,
+        "saturation_fraction": 0.049
+      }
+    },
+    "heavy_rotor": {
+      "split": "train",
+      "baseline": {
+        "iae_rad": 1.0910026368947656,
+        "voltage_effort_V2s": 520.7409634521803,
+        "overshoot_rad_s": 0.0,
+        "final_error_rad_s": 0.035338277309522215,
+        "peak_current_A": 11.181366924770778,
+        "saturation_fraction": 0.0
+      },
+      "tuned": {
+        "iae_rad": 0.3200848510206051,
+        "voltage_effort_V2s": 763.5623161476276,
+        "overshoot_rad_s": 0.02281355884128522,
+        "final_error_rad_s": 1.0041659946891102e-05,
+        "peak_current_A": 11.991742695982435,
+        "saturation_fraction": 0.058
+      }
+    },
+    "hot_winding": {
+      "split": "held_out",
+      "baseline": {
+        "iae_rad": 1.5620443883631319,
+        "voltage_effort_V2s": 907.3250839791242,
+        "overshoot_rad_s": 0.0,
+        "final_error_rad_s": 0.09574167448103654,
+        "peak_current_A": 12.59045897894263,
+        "saturation_fraction": 0.0
+      },
+      "tuned": {
+        "iae_rad": 0.3349753399814451,
+        "voltage_effort_V2s": 1414.6862461752928,
+        "overshoot_rad_s": 0.0,
+        "final_error_rad_s": 0.00010673839588681844,
+        "peak_current_A": 13.743635589397,
+        "saturation_fraction": 0.07
+      }
+    },
+    "higher_friction": {
+      "split": "held_out",
+      "baseline": {
+        "iae_rad": 1.3752555982120638,
+        "voltage_effort_V2s": 764.7251287161067,
+        "overshoot_rad_s": 0.0,
+        "final_error_rad_s": 0.06397758557229827,
+        "peak_current_A": 14.201510451404548,
+        "saturation_fraction": 0.0
+      },
+      "tuned": {
+        "iae_rad": 0.3214856775241075,
+        "voltage_effort_V2s": 1174.432048879932,
+        "overshoot_rad_s": 0.01187482845543597,
+        "final_error_rad_s": 2.186575587037609e-06,
+        "peak_current_A": 15.246873750857468,
+        "saturation_fraction": 0.056
+      }
+    },
+    "lower_speed": {
+      "split": "held_out",
+      "baseline": {
+        "iae_rad": 0.9660681346820412,
+        "voltage_effort_V2s": 347.44807646859374,
+        "overshoot_rad_s": 0.0,
+        "final_error_rad_s": 0.0500036939225289,
+        "peak_current_A": 10.030103089543635,
+        "saturation_fraction": 0.0
+      },
+      "tuned": {
+        "iae_rad": 0.1800791138060385,
+        "voltage_effort_V2s": 564.384063698004,
+        "overshoot_rad_s": 0.05235716123193024,
+        "final_error_rad_s": 1.0193584167206282e-05,
+        "peak_current_A": 11.451070854514434,
+        "saturation_fraction": 0.027
+      }
+    }
+  }
+}
