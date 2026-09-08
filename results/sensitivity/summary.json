@@ -1,0 +1,862 @@
+{
+  "python": "3.9.6",
+  "gain_source_sha256": "bec73a2adad96be34d9426156f3654616f447805f8fe6981a1e7010004b0224c",
+  "gains": {
+    "baseline": [
+      10.0,
+      10.0
+    ],
+    "tuned": [
+      60.73454666089994,
+      136.87661875517057
+    ]
+  },
+  "plant_dt_s": 0.001,
+  "duration_s": 5.0,
+  "noise_model": "Independent Gaussian speed error per control sample; fixed per-sample variance, not fixed spectral density",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "scenarios": [
+    {
+      "name": "hot_winding",
+      "motor": {
+        "resistance": 1.3,
+        "inductance": 0.5,
+        "inertia": 0.01,
+        "damping": 0.1,
+        "k": 0.01
+      },
+      "target": 1.0,
+      "load": 0.035,
+      "load_at": 2.0
+    },
+    {
+      "name": "higher_friction",
+      "motor": {
+        "resistance": 1.0,
+        "inductance": 0.5,
+        "inertia": 0.01,
+        "damping": 0.13,
+        "k": 0.01
+      },
+      "target": 1.0,
+      "load": 0.02,
+      "load_at": 2.0
+    },
+    {
+      "name": "lower_speed",
+      "motor": {
+        "resistance": 1.0,
+        "inductance": 0.5,
+        "inertia": 0.01,
+        "damping": 0.1,
+        "k": 0.01
+      },
+      "target": 0.65,
+      "load": 0.04,
+      "load_at": 2.0
+    }
+  ],
+  "run_count": 264,
+  "aggregates": [
+    {
+      "scenario": "hot_winding",
+      "controller": "baseline",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 1.5620514839840358,
+      "iae_min_rad": 1.5620514839840358,
+      "iae_max_rad": 1.5620514839840358
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "tuned",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.3349823432247744,
+      "iae_min_rad": 0.3349823432247744,
+      "iae_max_rad": 0.3349823432247744
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "baseline",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 1.561999882130936,
+      "iae_min_rad": 1.5603567125593945,
+      "iae_max_rad": 1.5640465612164165
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "tuned",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.33817456940346263,
+      "iae_min_rad": 0.3347648971139466,
+      "iae_max_rad": 0.3404897184950324
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "baseline",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 1.561793474718543,
+      "iae_min_rad": 1.5535776268608137,
+      "iae_max_rad": 1.5720268701459381
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "tuned",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.35726923682691736,
+      "iae_min_rad": 0.35083217150632606,
+      "iae_max_rad": 0.3673596789502589
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "baseline",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 1.5595584418431132,
+      "iae_min_rad": 1.5595584418431132,
+      "iae_max_rad": 1.5595584418431132
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "tuned",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.3378873128749421,
+      "iae_min_rad": 0.3378873128749421,
+      "iae_max_rad": 0.3378873128749421
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "baseline",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 1.5596068266253549,
+      "iae_min_rad": 1.5571133351694388,
+      "iae_max_rad": 1.5625033697187705
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "tuned",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.3420882741980039,
+      "iae_min_rad": 0.3372086527396239,
+      "iae_max_rad": 0.345182290825263
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "baseline",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 1.5598003657543256,
+      "iae_min_rad": 1.547332908474758,
+      "iae_max_rad": 1.5742830812214126
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "tuned",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.36565841730420745,
+      "iae_min_rad": 0.35361330150250025,
+      "iae_max_rad": 0.38066725759826286
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "baseline",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 1.5546106703289124,
+      "iae_min_rad": 1.5546106703289124,
+      "iae_max_rad": 1.5546106703289124
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "tuned",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.33832966408605786,
+      "iae_min_rad": 0.33832966408605786,
+      "iae_max_rad": 0.33832966408605786
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "baseline",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 1.5539252217310553,
+      "iae_min_rad": 1.5495772226364513,
+      "iae_max_rad": 1.5577231279548596
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "tuned",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.3421199230348704,
+      "iae_min_rad": 0.33880241091529595,
+      "iae_max_rad": 0.34806838268455953
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "baseline",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 1.551183427339618,
+      "iae_min_rad": 1.5294434318665853,
+      "iae_max_rad": 1.5701729584586182
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "tuned",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.3709598874833684,
+      "iae_min_rad": 0.34356869473443796,
+      "iae_max_rad": 0.39714190997149884
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "baseline",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 1.5400696142030967,
+      "iae_min_rad": 1.5400696142030967,
+      "iae_max_rad": 1.5400696142030967
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "tuned",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.35644750487795257,
+      "iae_min_rad": 0.35644750487795257,
+      "iae_max_rad": 0.35644750487795257
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "baseline",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 1.5356784469078173,
+      "iae_min_rad": 1.5281954317397812,
+      "iae_max_rad": 1.5404160714294226
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "tuned",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.35862164121768747,
+      "iae_min_rad": 0.3492146760800458,
+      "iae_max_rad": 0.36561101009437963
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "baseline",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 1.5181137777266984,
+      "iae_min_rad": 1.4806987018865287,
+      "iae_max_rad": 1.541801900334756
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "tuned",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.40613956655356903,
+      "iae_min_rad": 0.3908325453777211,
+      "iae_max_rad": 0.4273455392707288
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "baseline",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 1.3752596644567592,
+      "iae_min_rad": 1.3752596644567592,
+      "iae_max_rad": 1.3752596644567592
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "tuned",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.32148922170595406,
+      "iae_min_rad": 0.32148922170595406,
+      "iae_max_rad": 0.32148922170595406
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "baseline",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 1.3752176395402507,
+      "iae_min_rad": 1.3735498182978956,
+      "iae_max_rad": 1.3772836510163133
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "tuned",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.32409823561101436,
+      "iae_min_rad": 0.32179686209666813,
+      "iae_max_rad": 0.3253421146703996
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "baseline",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 1.3750495398742175,
+      "iae_min_rad": 1.3667104336624365,
+      "iae_max_rad": 1.3853795972545417
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "tuned",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.3438766233896437,
+      "iae_min_rad": 0.3373619157536824,
+      "iae_max_rad": 0.34820129102434727
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "baseline",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 1.3727574547848285,
+      "iae_min_rad": 1.3727574547848285,
+      "iae_max_rad": 1.3727574547848285
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "tuned",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.3226995978285071,
+      "iae_min_rad": 0.3226995978285071,
+      "iae_max_rad": 0.3226995978285071
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "baseline",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 1.3728123404055728,
+      "iae_min_rad": 1.3702973487569121,
+      "iae_max_rad": 1.375699960356991
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "tuned",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.32697597807534035,
+      "iae_min_rad": 0.3245102027779284,
+      "iae_max_rad": 0.3295309807171187
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "baseline",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 1.373031882888546,
+      "iae_min_rad": 1.3604569246452536,
+      "iae_max_rad": 1.3874699826456305
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "tuned",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.3479739594524771,
+      "iae_min_rad": 0.3389293853238115,
+      "iae_max_rad": 0.35980005669423804
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "baseline",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 1.3677751391100388,
+      "iae_min_rad": 1.3677751391100388,
+      "iae_max_rad": 1.3677751391100388
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "tuned",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.32524571026981,
+      "iae_min_rad": 0.32524571026981,
+      "iae_max_rad": 0.32524571026981
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "baseline",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 1.3670759369763348,
+      "iae_min_rad": 1.362722559551585,
+      "iae_max_rad": 1.37089711677221
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "tuned",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.32843507077581613,
+      "iae_min_rad": 0.3240018696337654,
+      "iae_max_rad": 0.3312256849092246
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "baseline",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 1.3642791284415285,
+      "iae_min_rad": 1.3425122413177777,
+      "iae_max_rad": 1.3833850274209203
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "tuned",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.3553974285463104,
+      "iae_min_rad": 0.3347864077095185,
+      "iae_max_rad": 0.36661083172869546
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "baseline",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 1.353000680775172,
+      "iae_min_rad": 1.353000680775172,
+      "iae_max_rad": 1.353000680775172
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "tuned",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.32333991653276134,
+      "iae_min_rad": 0.32333991653276134,
+      "iae_max_rad": 0.32333991653276134
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "baseline",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 1.3486063722050068,
+      "iae_min_rad": 1.3410273015699299,
+      "iae_max_rad": 1.3533930086475086
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "tuned",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.32992773215324933,
+      "iae_min_rad": 0.32547588265016825,
+      "iae_max_rad": 0.3375743976323186
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "baseline",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 1.3310291379243355,
+      "iae_min_rad": 1.2931337847489606,
+      "iae_max_rad": 1.3549623201368495
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "tuned",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.3813642328069952,
+      "iae_min_rad": 0.3619501018722011,
+      "iae_max_rad": 0.4102411727680572
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "baseline",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.9660761946977131,
+      "iae_min_rad": 0.9660761946977131,
+      "iae_max_rad": 0.9660761946977131
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "tuned",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.18009057484467686,
+      "iae_min_rad": 0.18009057484467686,
+      "iae_max_rad": 0.18009057484467686
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "baseline",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.9660210996066279,
+      "iae_min_rad": 0.9643162032712757,
+      "iae_max_rad": 0.9681757883555026
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "tuned",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.18372772901825066,
+      "iae_min_rad": 0.18270813324025756,
+      "iae_max_rad": 0.1851708876926326
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "baseline",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.9658007192423109,
+      "iae_min_rad": 0.9572762375655507,
+      "iae_max_rad": 0.9765741629866747
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "tuned",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.20276169246995082,
+      "iae_min_rad": 0.1972419271388381,
+      "iae_max_rad": 0.20690922299013656
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "baseline",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.9644029623162856,
+      "iae_min_rad": 0.9644029623162856,
+      "iae_max_rad": 0.9644029623162856
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "tuned",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.18284050175745425,
+      "iae_min_rad": 0.18284050175745425,
+      "iae_max_rad": 0.18284050175745425
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "baseline",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.9644771896049211,
+      "iae_min_rad": 0.9618880138089542,
+      "iae_max_rad": 0.9675274990460815
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "tuned",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.18675934968261176,
+      "iae_min_rad": 0.18360866398036937,
+      "iae_max_rad": 0.19069447660380873
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "baseline",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.9647740987594651,
+      "iae_min_rad": 0.9518282197796283,
+      "iae_max_rad": 0.9800256459652762
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "tuned",
+      "control_dt_s": 0.01,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.20916693839354342,
+      "iae_min_rad": 0.19549092652631495,
+      "iae_max_rad": 0.22422300000753514
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "baseline",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.9611029326514021,
+      "iae_min_rad": 0.9611029326514021,
+      "iae_max_rad": 0.9611029326514021
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "tuned",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.1878886665272328,
+      "iae_min_rad": 0.1878886665272328,
+      "iae_max_rad": 0.1878886665272328
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "baseline",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.9604362595136242,
+      "iae_min_rad": 0.9558253920558796,
+      "iae_max_rad": 0.9644106391625524
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "tuned",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.192937443129347,
+      "iae_min_rad": 0.18759144695921795,
+      "iae_max_rad": 0.19755977111163298
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "baseline",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.957769566962514,
+      "iae_min_rad": 0.934715229673792,
+      "iae_max_rad": 0.9776414652071422
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "tuned",
+      "control_dt_s": 0.02,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.22697904910859076,
+      "iae_min_rad": 0.2128068849441663,
+      "iae_max_rad": 0.2414534636153652
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "baseline",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.9515705344453861,
+      "iae_min_rad": 0.9515705344453861,
+      "iae_max_rad": 0.9515705344453861
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "tuned",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.0,
+      "n": 1,
+      "iae_mean_rad": 0.208493539561157,
+      "iae_min_rad": 0.208493539561157,
+      "iae_max_rad": 0.208493539561157
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "baseline",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.9468489888022528,
+      "iae_min_rad": 0.9389494580314108,
+      "iae_max_rad": 0.9519477537961423
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "tuned",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.01,
+      "n": 5,
+      "iae_mean_rad": 0.2171755045319399,
+      "iae_min_rad": 0.21170816934940775,
+      "iae_max_rad": 0.22444303885416256
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "baseline",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.9279628062297104,
+      "iae_min_rad": 0.8884651523755053,
+      "iae_max_rad": 0.9534566311991555
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "tuned",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.05,
+      "n": 5,
+      "iae_mean_rad": 0.27947386030981575,
+      "iae_min_rad": 0.25845818662188264,
+      "iae_max_rad": 0.3064541342836618
+    }
+  ],
+  "refinement": [
+    {
+      "scenario": "hot_winding",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.0,
+      "max_speed_difference_rad_s": 1.862279774833553e-11
+    },
+    {
+      "scenario": "hot_winding",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.05,
+      "max_speed_difference_rad_s": 1.862279774833553e-11
+    },
+    {
+      "scenario": "hot_winding",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.0,
+      "max_speed_difference_rad_s": 1.862279774833553e-11
+    },
+    {
+      "scenario": "hot_winding",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.05,
+      "max_speed_difference_rad_s": 1.862279774833553e-11
+    },
+    {
+      "scenario": "higher_friction",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.0,
+      "max_speed_difference_rad_s": 2.7824825776789908e-11
+    },
+    {
+      "scenario": "higher_friction",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.05,
+      "max_speed_difference_rad_s": 2.7824825776789908e-11
+    },
+    {
+      "scenario": "higher_friction",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.0,
+      "max_speed_difference_rad_s": 2.7824825776789908e-11
+    },
+    {
+      "scenario": "higher_friction",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.05,
+      "max_speed_difference_rad_s": 2.7824825776789908e-11
+    },
+    {
+      "scenario": "lower_speed",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.0,
+      "max_speed_difference_rad_s": 1.7329415680222837e-11
+    },
+    {
+      "scenario": "lower_speed",
+      "control_dt_s": 0.005,
+      "noise_std_rad_s": 0.05,
+      "max_speed_difference_rad_s": 1.7329415680222837e-11
+    },
+    {
+      "scenario": "lower_speed",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.0,
+      "max_speed_difference_rad_s": 2.1536994410098487e-11
+    },
+    {
+      "scenario": "lower_speed",
+      "control_dt_s": 0.05,
+      "noise_std_rad_s": 0.05,
+      "max_speed_difference_rad_s": 2.156885781090523e-11
+    }
+  ]
+}

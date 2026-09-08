@@ -82,22 +82,44 @@ reported in [summary.json](results/summary.json), alongside every raw trajectory
 
 ## Verification
 
-Eight tests cover equilibrium with opposing load, open-loop convergence,
+Fourteen tests cover equilibrium with opposing load, open-loop convergence,
 electromechanical energy balance, RK4 convergence order on a known RL response,
 anti-windup, load rejection, sample-rate refinement, and invalid parameters.
+They also check command holding between updates, sensor-noise reproducibility,
+isolation of measurement noise from the true plant state, grid alignment, and
+integration refinement with the recorded tuned gains and identical sensor samples.
 The tests also pass on Python 3.12 locally.
 [GitHub Actions passed on Python 3.9 and 3.12](https://github.com/anantdwiv12/motor-control-lab/actions/runs/34193151055)
 for the initial published implementation.
 
+## Sampling and noise experiment
+
+```sh
+python sensitivity.py
+```
+
+This standard-library-only experiment freezes the recorded gains and evaluates
+four controller periods (5–50 ms) and three sensor-noise levels across the original
+three held-out scenarios. It separates controller timing from 1 ms plant integration.
+The [264-run report](results/sensitivity/README.md) includes per-run CSV measurements,
+five noise seeds, scenario-level ranges, and twelve plant-integration refinement checks.
+
+Mean tuned integrated error across scenarios rises from 0.27885 rad at 5 ms without
+noise to 0.35566 rad at 50 ms with 0.05 rad/s noise. It remains below the untuned
+baseline in every aggregate table cell. These finite simulations establish neither
+formal stability nor hardware reliability; this is a reused evaluation set.
+
 ## Limits and next experiments
 
 The model omits brush friction, PWM switching, encoder noise, thermal dynamics,
-current limiting, delays, and drive electronics. There is no formal closed-loop
+current limiting, delays, and drive electronics. The sensitivity experiment adds
+synthetic Gaussian measurement noise, but no calibrated encoder model.
+There is no formal closed-loop
 stability proof. The three fixed held-out scenarios are a small generalization
-check. The sample-rate test uses reference gains; the tuned controller still needs
-its own rate/noise sensitivity sweep. No gains here are recommended for hardware.
+check. Rate/noise sensitivity has now been evaluated with frozen tuned gains;
+it is not an independent new validation set. No gains here are recommended for hardware.
 
-Next: add a stronger hand-designed baseline, tuned-gain sample-rate tests,
+Next: add a stronger hand-designed baseline,
 reference integration with SciPy, explicit current constraints, multi-seed
 optimization, and randomized parameter evaluation with uncertainty intervals.
 

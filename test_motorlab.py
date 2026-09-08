@@ -1,6 +1,8 @@
 import math
+import json
+from pathlib import Path
 import unittest
-from motorlab import Motor, PI, Scenario, simulate, step
+from motorlab import Motor, PI, Scenario, simulate, simulate_sampled, step
 
 
 class PhysicsTests(unittest.TestCase):
@@ -67,6 +69,49 @@ class ControllerTests(unittest.TestCase):
             PI(-1, 2)
         with self.assertRaises(ValueError):
             simulate((1, 1), Scenario("bad"), dt=0)
+
+
+class SampledSimulationTests(unittest.TestCase):
+    def test_zero_noise_preserves_original_simulation(self):
+        scenario = Scenario('same', load=0.03)
+        self.assertEqual(simulate((20, 40), scenario),
+                         simulate_sampled((20, 40), scenario, plant_dt=0.005))
+
+    def test_voltage_is_held_between_controller_updates(self):
+        rows = simulate_sampled((20, 40), Scenario('hold'), control_dt=0.02, duration=0.1)
+        for start in range(0, 100, 20):
+            self.assertEqual(len(set(r[3] for r in rows[start:start+20])), 1)
+        self.assertNotEqual(rows[0][3], rows[20][3])
+
+    def test_seed_reproducibility_and_voltage_bounds(self):
+        # Run past initial voltage saturation, which masks sensor differences.
+        kwargs = dict(noise_std=0.05, duration=1.0)
+        a = simulate_sampled((60, 130), Scenario('noise'), seed=1, **kwargs)
+        self.assertEqual(a, simulate_sampled((60, 130), Scenario('noise'), seed=1, **kwargs))
+        self.assertNotEqual(a, simulate_sampled((60, 130), Scenario('noise'), seed=2, **kwargs))
+        self.assertTrue(all(abs(r[3]) <= 24 for r in a))
+
+    def test_noise_does_not_directly_modify_plant_state(self):
+        # Zero gains isolate the sensor from actuator dynamics: noise cannot
+        # change any physical state when no voltage or load is applied.
+        rows = simulate_sampled((0, 0), Scenario('isolated'), noise_std=10, duration=0.1)
+        self.assertTrue(all(r[1] == 0 and r[2] == 0 and r[3] == 0 for r in rows))
+
+    def test_grid_and_noise_validation(self):
+        for kwargs in ({'control_dt': 0.0015}, {'duration': 0.0015},
+                       {'control_dt': 0.0001}, {'noise_std': -1}, {'noise_std': float('nan')}):
+            with self.assertRaises(ValueError):
+                simulate_sampled((1, 1), Scenario('invalid'), **kwargs)
+        with self.assertRaises(ValueError):
+            simulate_sampled((1, 1), Scenario('unaligned', load_at=0.0025))
+
+    def test_tuned_gains_plant_refinement_with_identical_sensor_samples(self):
+        gains = json.loads((Path(__file__).parent / 'results/summary.json').read_text())['tuned_gains']
+        scenario = Scenario('refinement', load=0.03)
+        kwargs = dict(control_dt=0.05, noise_std=0.05, seed=4, duration=3)
+        coarse = simulate_sampled(gains, scenario, plant_dt=0.001, **kwargs)
+        fine = simulate_sampled(gains, scenario, plant_dt=0.0005, **kwargs)
+        self.assertLess(max(abs(a[2]-b[2]) for a,b in zip(coarse, fine[::2])), 1e-7)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,7 @@
 """Sampled PI control of a brushed DC motor; all quantities are in SI units."""
 from dataclasses import dataclass
 import math
+import random
 
 
 @dataclass(frozen=True)
@@ -104,6 +105,45 @@ def simulate(gains, scenario, dt=0.005, duration=5.0):
         state = step(scenario.motor, state, voltage, load, dt)
     # Final state is explicit; controls at this endpoint describe the prior interval.
     rows.append((duration, state[0], state[1], rows[-1][3], rows[-1][4]))
+    return rows
+
+
+def simulate_sampled(gains, scenario, control_dt=0.005, plant_dt=0.001,
+                     duration=5.0, noise_std=0.0, seed=0):
+    """Separate controller sampling from plant integration.
+
+    Independent zero-mean Gaussian speed measurement noise is drawn once per
+    control update. Voltage is held between updates. Returned speeds are true
+    plant states, never noisy measurements. Periods and load events must align
+    with the plant grid so neither integration nor disturbance timing changes
+    accidentally when the controller rate is varied.
+    """
+    if (not all(math.isfinite(v) and v > 0 for v in (control_dt, plant_dt, duration))
+            or not math.isfinite(noise_std) or noise_std < 0):
+        raise ValueError("Periods must be positive; noise must be nonnegative and finite")
+
+    def grid_index(value):
+        index = round(value / plant_dt)
+        if not math.isclose(index * plant_dt, value, rel_tol=0, abs_tol=1e-10):
+            raise ValueError("Periods and load events must align with the plant grid")
+        return index
+
+    stride, count = grid_index(control_dt), grid_index(duration)
+    if stride < 1 or count < 1:
+        raise ValueError("Controller period and duration must be at least plant_dt")
+    if not math.isfinite(scenario.load_at):
+        raise ValueError("Load time must be finite")
+    load_index = grid_index(scenario.load_at)
+    rng, controller = random.Random(seed), PI(*gains)
+    state, rows, voltage = (0.0, 0.0), [], 0.0
+    for n in range(count):
+        load = scenario.load if n >= load_index else 0.0
+        if n % stride == 0:
+            measured_speed = state[1] + (rng.gauss(0, noise_std) if noise_std else 0.0)
+            voltage = controller.update(scenario.target - measured_speed, control_dt)
+        rows.append((n * plant_dt, state[0], state[1], voltage, load))
+        state = step(scenario.motor, state, voltage, load, plant_dt)
+    rows.append((duration, state[0], state[1], voltage, load))
     return rows
 
 
