@@ -85,8 +85,9 @@ reported in [summary.json](results/summary.json), alongside every raw trajectory
 Eight tests cover equilibrium with opposing load, open-loop convergence,
 electromechanical energy balance, RK4 convergence order on a known RL response,
 anti-windup, load rejection, sample-rate refinement, and invalid parameters.
-GitHub Actions is configured for the standard-library tests; remote CI has not
-run until this repository is published.
+The tests also pass on Python 3.12 locally.
+[GitHub Actions passed on Python 3.9 and 3.12](https://github.com/anantdwiv12/motor-control-lab/actions/runs/34193151055)
+for the initial published implementation.
 
 ## Limits and next experiments
 
