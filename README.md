@@ -82,13 +82,15 @@ reported in [summary.json](results/summary.json), alongside every raw trajectory
 
 ## Verification
 
-Fourteen tests cover equilibrium with opposing load, open-loop convergence,
+Seventeen tests cover equilibrium with opposing load, open-loop convergence,
 electromechanical energy balance, RK4 convergence order on a known RL response,
 anti-windup, load rejection, sample-rate refinement, and invalid parameters.
 They also check command holding between updates, sensor-noise reproducibility,
 isolation of measurement noise from the true plant state, grid alignment, and
 integration refinement with the recorded tuned gains and identical sensor samples.
 The tests also pass on Python 3.12 locally.
+The model-derived baseline adds polynomial-factorization and independent
+analytic-response checks, plus validation of unsupported design inputs.
 [GitHub Actions passed on Python 3.9 and 3.12](https://github.com/anantdwiv12/motor-control-lab/actions/runs/34193151055)
 for the initial published implementation.
 
@@ -109,6 +111,19 @@ noise to 0.35566 rad at 50 ms with 0.05 rad/s noise. It remains below the untune
 baseline in every aggregate table cell. These finite simulations establish neither
 formal stability nor hardware reliability; this is a reused evaluation set.
 
+## Model-derived controller baseline
+
+```sh
+python baseline_comparison.py
+```
+
+A [documented pole-cancellation design](DESIGN.md) selects PI gains from the
+nominal motor and a fixed damping ratio of 0.8. The [63-run comparison](results/derived-baseline/README.md)
+preserves the original untuned and optimized results. In the selected slower/noisy
+condition, optimized mean error is only about 6% below this derived baseline,
+at about 12% higher voltage effort. This provides a more informative comparison
+than the original untuned reference; it is still a limited simulation study.
+
 ## Limits and next experiments
 
 The model omits brush friction, PWM switching, encoder noise, thermal dynamics,
@@ -119,8 +134,7 @@ stability proof. The three fixed held-out scenarios are a small generalization
 check. Rate/noise sensitivity has now been evaluated with frozen tuned gains;
 it is not an independent new validation set. No gains here are recommended for hardware.
 
-Next: add a stronger hand-designed baseline,
-reference integration with SciPy, explicit current constraints, multi-seed
+Next: reference integration with SciPy, explicit current constraints, multi-seed
 optimization, and randomized parameter evaluation with uncertainty intervals.
 
 ## Open source and authorship
