@@ -124,6 +124,44 @@ condition, optimized mean error is only about 6% below this derived baseline,
 at about 12% higher voltage effort. This provides a more informative comparison
 than the original untuned reference; it is still a limited simulation study.
 
+## Independent numerical reference
+
+With the declared dependencies installed:
+
+```sh
+python -m unittest discover -s reference_tests -v
+python validate_reference.py
+```
+
+Six additional SciPy-dependent tests complement the 17 standard-library tests.
+The [12-comparison report](results/reference/README.md) compares RK4 with
+`scipy.linalg.expm` across four open-loop input schedules and three step sizes.
+The reference independently constructs an augmented linear system from the motor
+parameters; it does not call `Motor.derivative` or RK4. The system is
+
+```text
+z = [i, w, V, load]
+dz/dt = [[-R/L, -K/L, 1/L, 0],
+         [ K/J, -b/J,   0, -1/J],
+         [   0,    0,   0, 0],
+         [   0,    0,   0, 0]] z
+z(t+h) = exp(M h) z(t)
+```
+
+Inputs are held between events. Both methods split at event times even when they
+fall between output samples. Tests check event timing by explicit composition,
+as well as steady state, held-input composition, and RK4 refinement. At 5 ms,
+maximum speed error across the four one-second cases is **1.17e-8 rad/s**, and
+maximum current error is **9.68e-10 A**. CI runs both test suites and the reference
+comparison on Python 3.9 and 3.12, with acceptance thresholds of 1e-7 rad/s and
+1e-6 A at 5 ms.
+
+This reference is exact for the stated held-input linear equations in mathematical
+terms; its computed matrix exponential still has floating-point error. The two
+methods share the event harness, whose boundary behavior is separately tested.
+Existing closed-loop simulators and prior result files are unchanged. This is an
+open-loop numerical check, not independent experimental validation of the motor.
+
 ## Limits and next experiments
 
 The model omits brush friction, PWM switching, encoder noise, thermal dynamics,
@@ -134,7 +172,7 @@ stability proof. The three fixed held-out scenarios are a small generalization
 check. Rate/noise sensitivity has now been evaluated with frozen tuned gains;
 it is not an independent new validation set. No gains here are recommended for hardware.
 
-Next: reference integration with SciPy, explicit current constraints, multi-seed
+Next: explicit current constraints and energy accounting, multi-seed
 optimization, and randomized parameter evaluation with uncertainty intervals.
 
 ## Open source and authorship

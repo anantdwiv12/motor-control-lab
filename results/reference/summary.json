@@ -1,0 +1,174 @@
+{
+  "python": "3.9.6",
+  "scipy": "1.13.1",
+  "duration_s": 1,
+  "cases": [
+    {
+      "name": "constant",
+      "motor": {
+        "resistance": 1.0,
+        "inductance": 0.5,
+        "inertia": 0.01,
+        "damping": 0.1,
+        "k": 0.01
+      },
+      "events": [
+        [
+          0,
+          12,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "off_grid_load",
+      "motor": {
+        "resistance": 1.0,
+        "inductance": 0.5,
+        "inertia": 0.01,
+        "damping": 0.1,
+        "k": 0.01
+      },
+      "events": [
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0.137,
+          12,
+          0.03
+        ]
+      ]
+    },
+    {
+      "name": "hot_reversal",
+      "motor": {
+        "resistance": 1.3,
+        "inductance": 0.5,
+        "inertia": 0.01,
+        "damping": 0.1,
+        "k": 0.01
+      },
+      "events": [
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0.333,
+          -12,
+          0
+        ],
+        [
+          0.701,
+          -6,
+          -0.02
+        ]
+      ]
+    },
+    {
+      "name": "heavy_mixed",
+      "motor": {
+        "resistance": 1.0,
+        "inductance": 0.5,
+        "inertia": 0.016,
+        "damping": 0.1,
+        "k": 0.01
+      },
+      "events": [
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0.137,
+          10,
+          0.025
+        ],
+        [
+          0.701,
+          0,
+          0
+        ]
+      ]
+    }
+  ],
+  "results": [
+    {
+      "case": "constant",
+      "dt_s": 0.02,
+      "max_current_error_A": 9.737248340968563e-08,
+      "max_speed_error_rad_s": 1.733349025506703e-06
+    },
+    {
+      "case": "constant",
+      "dt_s": 0.01,
+      "max_current_error_A": 5.98701621612463e-09,
+      "max_speed_error_rad_s": 9.962293730236826e-08
+    },
+    {
+      "case": "constant",
+      "dt_s": 0.005,
+      "max_current_error_A": 3.7110847728172303e-10,
+      "max_speed_error_rad_s": 5.971266814341902e-09
+    },
+    {
+      "case": "off_grid_load",
+      "dt_s": 0.02,
+      "max_current_error_A": 9.435520542666609e-08,
+      "max_speed_error_rad_s": 2.7323929303879613e-06
+    },
+    {
+      "case": "off_grid_load",
+      "dt_s": 0.01,
+      "max_current_error_A": 5.8366982358393216e-09,
+      "max_speed_error_rad_s": 1.5822964319345267e-07
+    },
+    {
+      "case": "off_grid_load",
+      "dt_s": 0.005,
+      "max_current_error_A": 3.645057589096723e-10,
+      "max_speed_error_rad_s": 9.586855004295458e-09
+    },
+    {
+      "case": "hot_reversal",
+      "dt_s": 0.02,
+      "max_current_error_A": 2.533397962523054e-07,
+      "max_speed_error_rad_s": 3.2401691069106064e-06
+    },
+    {
+      "case": "hot_reversal",
+      "dt_s": 0.01,
+      "max_current_error_A": 1.54741202074149e-08,
+      "max_speed_error_rad_s": 1.8903667942105074e-07
+    },
+    {
+      "case": "hot_reversal",
+      "dt_s": 0.005,
+      "max_current_error_A": 9.684550938970915e-10,
+      "max_speed_error_rad_s": 1.1732323723645521e-08
+    },
+    {
+      "case": "heavy_mixed",
+      "dt_s": 0.02,
+      "max_current_error_A": 9.970018055582841e-08,
+      "max_speed_error_rad_s": 8.885864751506656e-07
+    },
+    {
+      "case": "heavy_mixed",
+      "dt_s": 0.01,
+      "max_current_error_A": 6.3068297251334116e-09,
+      "max_speed_error_rad_s": 5.357541366102225e-08
+    },
+    {
+      "case": "heavy_mixed",
+      "dt_s": 0.005,
+      "max_current_error_A": 4.0251180166706035e-10,
+      "max_speed_error_rad_s": 3.2812754457989257e-09
+    }
+  ]
+}
