@@ -1,0 +1,500 @@
+{
+  "python": "3.9.6",
+  "gain_source_sha256": "bec73a2adad96be34d9426156f3654616f447805f8fe6981a1e7010004b0224c",
+  "gains": {
+    "untuned": [
+      10.0,
+      10.0
+    ],
+    "derived": [
+      19.521482542800005,
+      39.091784052654674
+    ],
+    "optimized": [
+      60.73454666089994,
+      136.87661875517057
+    ]
+  },
+  "control_dt_s": 0.005,
+  "duration_s": 5,
+  "noise_std_rad_s": 0,
+  "scenarios": [
+    {
+      "name": "nominal",
+      "motor": {
+        "resistance": 1.0,
+        "inductance": 0.5,
+        "inertia": 0.01,
+        "damping": 0.1,
+        "k": 0.01
+      },
+      "target": 1.0,
+      "load": 0.0,
+      "load_at": 2.0
+    },
+    {
+      "name": "load",
+      "motor": {
+        "resistance": 1.0,
+        "inductance": 0.5,
+        "inertia": 0.01,
+        "damping": 0.1,
+        "k": 0.01
+      },
+      "target": 1.0,
+      "load": 0.025,
+      "load_at": 2.0
+    },
+    {
+      "name": "heavy_rotor",
+      "motor": {
+        "resistance": 1.0,
+        "inductance": 0.5,
+        "inertia": 0.016,
+        "damping": 0.1,
+        "k": 0.01
+      },
+      "target": 1.0,
+      "load": 0.015,
+      "load_at": 2.0
+    },
+    {
+      "name": "hot_winding",
+      "motor": {
+        "resistance": 1.3,
+        "inductance": 0.5,
+        "inertia": 0.01,
+        "damping": 0.1,
+        "k": 0.01
+      },
+      "target": 1.0,
+      "load": 0.035,
+      "load_at": 2.0
+    },
+    {
+      "name": "higher_friction",
+      "motor": {
+        "resistance": 1.0,
+        "inductance": 0.5,
+        "inertia": 0.01,
+        "damping": 0.13,
+        "k": 0.01
+      },
+      "target": 1.0,
+      "load": 0.02,
+      "load_at": 2.0
+    },
+    {
+      "name": "lower_speed",
+      "motor": {
+        "resistance": 1.0,
+        "inductance": 0.5,
+        "inertia": 0.01,
+        "damping": 0.1,
+        "k": 0.01
+      },
+      "target": 0.65,
+      "load": 0.04,
+      "load_at": 2.0
+    }
+  ],
+  "run_count": 36,
+  "runs": [
+    {
+      "scenario": "nominal",
+      "controller": "untuned",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 384.3082363089678,
+      "copper_loss_J": 360.07519593949286,
+      "friction_loss_J": 0.3498530011435028,
+      "load_work_J": 0.0,
+      "stored_change_J": 23.883201391787573,
+      "residual_J": -1.4023456113676502e-05
+    },
+    {
+      "scenario": "nominal",
+      "controller": "untuned",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 384.30824778990234,
+      "copper_loss_J": 360.0751969030117,
+      "friction_loss_J": 0.34985300096613026,
+      "load_work_J": 0.0,
+      "stored_change_J": 23.88320139179043,
+      "residual_J": -3.5058659371145495e-06
+    },
+    {
+      "scenario": "nominal",
+      "controller": "derived",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 504.4146390539416,
+      "copper_loss_J": 478.942744659928,
+      "friction_loss_J": 0.46696591189580916,
+      "load_work_J": 0.0,
+      "stored_change_J": 25.004988994023318,
+      "residual_J": -6.051190553790775e-05
+    },
+    {
+      "scenario": "nominal",
+      "controller": "derived",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 504.41466253789247,
+      "copper_loss_J": 478.9427227599542,
+      "friction_loss_J": 0.46696591189608294,
+      "load_work_J": 0.0,
+      "stored_change_J": 25.004988994023318,
+      "residual_J": -1.5127981153995051e-05
+    },
+    {
+      "scenario": "nominal",
+      "controller": "optimized",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 502.4807018083447,
+      "copper_loss_J": 477.01152555751275,
+      "friction_loss_J": 0.4644034643962906,
+      "load_work_J": 0.0,
+      "stored_change_J": 25.004864688824203,
+      "residual_J": -9.190238855794064e-05
+    },
+    {
+      "scenario": "nominal",
+      "controller": "optimized",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 502.48073314254566,
+      "copper_loss_J": 477.01148796492953,
+      "friction_loss_J": 0.4644034643960605,
+      "load_work_J": 0.0,
+      "stored_change_J": 25.004864688824203,
+      "residual_J": -2.2975604132113858e-05
+    },
+    {
+      "scenario": "load",
+      "controller": "untuned",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 508.321666216711,
+      "copper_loss_J": 471.5086116889669,
+      "friction_loss_J": 0.3130922904509595,
+      "load_work_J": 0.06453204672865293,
+      "stored_change_J": 36.43544184384758,
+      "residual_J": -1.165328308871949e-05
+    },
+    {
+      "scenario": "load",
+      "controller": "untuned",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 508.32168128144025,
+      "copper_loss_J": 471.50861804450795,
+      "friction_loss_J": 0.31309226347688607,
+      "load_work_J": 0.06453204291850205,
+      "stored_change_J": 36.435441843859635,
+      "residual_J": -2.9133227315014665e-06
+    },
+    {
+      "scenario": "load",
+      "controller": "derived",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 672.4184960470092,
+      "copper_loss_J": 632.8228797046211,
+      "friction_loss_J": 0.45498073334454303,
+      "load_work_J": 0.07339966024294989,
+      "stored_change_J": 39.06729491633305,
+      "residual_J": -5.896753243916919e-05
+    },
+    {
+      "scenario": "load",
+      "controller": "derived",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 672.4185238235141,
+      "copper_loss_J": 632.8228632906313,
+      "friction_loss_J": 0.4549807021004304,
+      "load_work_J": 0.0733996563378057,
+      "stored_change_J": 39.06729491633297,
+      "residual_J": -1.474188841399382e-05
+    },
+    {
+      "scenario": "load",
+      "controller": "optimized",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 681.3455052805305,
+      "copper_loss_J": 641.7423837732335,
+      "friction_loss_J": 0.4610246658312018,
+      "load_work_J": 0.07450706141744212,
+      "stored_change_J": 39.067687370394545,
+      "residual_J": -9.759034627165875e-05
+    },
+    {
+      "scenario": "load",
+      "controller": "optimized",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 681.3455427156875,
+      "copper_loss_J": 641.7423480506798,
+      "friction_loss_J": 0.4610246346856183,
+      "load_work_J": 0.07450705752252915,
+      "stored_change_J": 39.06768737039441,
+      "residual_J": -2.4397594785341425e-05
+    },
+    {
+      "scenario": "heavy_rotor",
+      "controller": "untuned",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 464.72013271175217,
+      "copper_loss_J": 433.0880310764147,
+      "friction_loss_J": 0.32879120490859176,
+      "load_work_J": 0.04013821428008025,
+      "stored_change_J": 31.26318615637753,
+      "residual_J": -1.3940228750897177e-05
+    },
+    {
+      "scenario": "heavy_rotor",
+      "controller": "untuned",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 464.72014662864814,
+      "copper_loss_J": 433.08803454927505,
+      "friction_loss_J": 0.3287911945914765,
+      "load_work_J": 0.0401382134606138,
+      "stored_change_J": 31.263186156380296,
+      "residual_J": -3.4850593024771115e-06
+    },
+    {
+      "scenario": "heavy_rotor",
+      "controller": "derived",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 613.0247060150075,
+      "copper_loss_J": 579.4472670091009,
+      "friction_loss_J": 0.4626027278259749,
+      "load_work_J": 0.04442464222957296,
+      "stored_change_J": 33.070482199683916,
+      "residual_J": -7.056383283554624e-05
+    },
+    {
+      "scenario": "heavy_rotor",
+      "controller": "derived",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 613.0247346975727,
+      "copper_loss_J": 579.4472427813594,
+      "friction_loss_J": 0.4626027161311245,
+      "load_work_J": 0.04442464136286585,
+      "stored_change_J": 33.07048219968368,
+      "residual_J": -1.764096429468509e-05
+    },
+    {
+      "scenario": "heavy_rotor",
+      "controller": "optimized",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 610.1509372165518,
+      "copper_loss_J": 576.5787614002707,
+      "friction_loss_J": 0.45788601968510784,
+      "load_work_J": 0.044810948585583654,
+      "stored_change_J": 33.06958766653194,
+      "residual_J": -0.00010881852145416815
+    },
+    {
+      "scenario": "heavy_rotor",
+      "controller": "optimized",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 610.1509754646418,
+      "copper_loss_J": 576.5787180470226,
+      "friction_loss_J": 0.45788600800227997,
+      "load_work_J": 0.04481094772401636,
+      "stored_change_J": 33.0695876665315,
+      "residual_J": -2.7204638591626917e-05
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "untuned",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 641.1778973232528,
+      "copper_loss_J": 601.2090981189139,
+      "friction_loss_J": 0.25403165808431705,
+      "load_work_J": 0.0807708336083197,
+      "stored_change_J": 39.63400275890693,
+      "residual_J": -6.046260672576409e-06
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "untuned",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 641.1779211676001,
+      "copper_loss_J": 601.2091174709826,
+      "friction_loss_J": 0.2540316231725989,
+      "load_work_J": 0.08077082608179112,
+      "stored_change_J": 39.63400275893328,
+      "residual_J": -1.511570225432024e-06
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "derived",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 932.6639262434925,
+      "copper_loss_J": 886.6074895772356,
+      "friction_loss_J": 0.4313961363791368,
+      "load_work_J": 0.10075579429297944,
+      "stored_change_J": 45.52434529080334,
+      "residual_J": -6.055521855330426e-05
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "derived",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 932.6639670391577,
+      "copper_loss_J": 886.607485007502,
+      "friction_loss_J": 0.43139609300143444,
+      "load_work_J": 0.10075578666647077,
+      "stored_change_J": 45.52434529080427,
+      "residual_J": -1.5138816451099046e-05
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "optimized",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 963.5129580283904,
+      "copper_loss_J": 917.398270689788,
+      "friction_loss_J": 0.44980451166075847,
+      "load_work_J": 0.10312437432292956,
+      "stored_change_J": 45.56186561832522,
+      "residual_J": -0.00010716570653102053
+    },
+    {
+      "scenario": "hot_winding",
+      "controller": "optimized",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 963.5130104995471,
+      "copper_loss_J": 917.3982428378578,
+      "friction_loss_J": 0.449804468118479,
+      "load_work_J": 0.10312436668882505,
+      "stored_change_J": 45.561865618325136,
+      "residual_J": -2.6791443069384968e-05
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "untuned",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 686.7641296940667,
+      "copper_loss_J": 635.9192234469664,
+      "friction_loss_J": 0.36940211355903324,
+      "load_work_J": 0.05040893056844444,
+      "stored_change_J": 50.425105489184396,
+      "residual_J": -1.0286211562515746e-05
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "untuned",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 686.764149083943,
+      "copper_loss_J": 635.9192351507501,
+      "friction_loss_J": 0.3694020873646423,
+      "load_work_J": 0.050408928164970494,
+      "stored_change_J": 50.42510548921881,
+      "residual_J": -2.571555448582785e-06
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "derived",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 988.0047227051099,
+      "copper_loss_J": 931.1135638071764,
+      "friction_loss_J": 0.5777758292519842,
+      "load_work_J": 0.05897376717403712,
+      "stored_change_J": 56.25447113847199,
+      "residual_J": -6.183696456218968e-05
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "derived",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 988.0047569318285,
+      "copper_loss_J": 931.1135516911637,
+      "friction_loss_J": 0.5777757967646198,
+      "load_work_J": 0.05897376467543841,
+      "stored_change_J": 56.25447113847205,
+      "residual_J": -1.5459247286742084e-05
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "optimized",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 1007.0031490739351,
+      "copper_loss_J": 950.0977567155614,
+      "friction_loss_J": 0.5906366207436974,
+      "load_work_J": 0.05967194686888135,
+      "stored_change_J": 56.255175563651456,
+      "residual_J": -9.177289037154424e-05
+    },
+    {
+      "scenario": "higher_friction",
+      "controller": "optimized",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 1007.0031907864309,
+      "copper_loss_J": 950.0977296332518,
+      "friction_loss_J": 0.5906365883771053,
+      "load_work_J": 0.059671944380674385,
+      "stored_change_J": 56.2551755636514,
+      "residual_J": -2.2943230092664635e-05
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "untuned",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 309.306745911127,
+      "copper_loss_J": 283.9822053964509,
+      "friction_loss_J": 0.11303797342092178,
+      "load_work_J": 0.05896501344772838,
+      "stored_change_J": 25.152541983696462,
+      "residual_J": -4.455889040855254e-06
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "untuned",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 309.3067554054211,
+      "copper_loss_J": 283.98221158668537,
+      "friction_loss_J": 0.1130379454828002,
+      "load_work_J": 0.05896500351697975,
+      "stored_change_J": 25.1525419837097,
+      "residual_J": -1.1139737630116997e-06
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "derived",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 415.5551367615561,
+      "copper_loss_J": 387.7308595130835,
+      "friction_loss_J": 0.18605191235683513,
+      "load_work_J": 0.07390535234944834,
+      "stored_change_J": 27.564347857301982,
+      "residual_J": -2.7873535625388968e-05
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "derived",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 415.55515291634003,
+      "copper_loss_J": 387.7308548052114,
+      "friction_loss_J": 0.18605187986292188,
+      "load_work_J": 0.07390534235059872,
+      "stored_change_J": 27.564347857301982,
+      "residual_J": -6.968386848882346e-06
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "optimized",
+      "plant_dt_s": 0.001,
+      "electrical_net_J": 433.5215827334177,
+      "copper_loss_J": 405.6825132300217,
+      "friction_loss_J": 0.19733606724377384,
+      "load_work_J": 0.07680315617181735,
+      "stored_change_J": 27.56502416006476,
+      "residual_J": -9.388008436062023e-05
+    },
+    {
+      "scenario": "lower_speed",
+      "controller": "optimized",
+      "plant_dt_s": 0.0005,
+      "electrical_net_J": 433.5216153943517,
+      "copper_loss_J": 405.68247552330917,
+      "friction_loss_J": 0.19733603482479564,
+      "load_work_J": 0.07680314618147707,
+      "stored_change_J": 27.565024160064706,
+      "residual_J": -2.3470028416738842e-05
+    }
+  ]
+}

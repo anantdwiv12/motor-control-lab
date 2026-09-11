@@ -162,6 +162,52 @@ methods share the event harness, whose boundary behavior is separately tested.
 Existing closed-loop simulators and prior result files are unchanged. This is an
 open-loop numerical check, not independent experimental validation of the motor.
 
+## Energy accounting
+
+```sh
+python energy_experiment.py
+```
+
+The [36-run energy report](results/energy/README.md) measures electrical input,
+copper losses, friction losses, load work and stored-energy changes for all three
+frozen controllers across six scenarios. No gains are retuned. Unlike voltage
+effort (`integral(V² dt)`), these quantities have units of joules:
+
+```text
+E_electrical = integral(V i dt)
+E_copper = integral(R i² dt)
+E_friction = integral(b w² dt)
+W_load = integral(load w dt)
+Delta E_stored = [(L i² + J w²)/2]_final - [(L i² + J w²)/2]_initial
+residual = E_electrical - E_copper - E_friction - W_load - Delta E_stored
+```
+
+Multiply the current equation by `i` and the speed equation by `w`, then add:
+the equal-and-opposite `K i w` conversion terms cancel. Integrating yields the
+balance above. Input and load work are signed; negative electrical input means
+energy leaves the ideal motor terminals, not that a real battery captures it.
+
+`energy_balance` uses trapezoidal quadrature on continuous states, holding each
+interval's voltage and load at their left-endpoint values. This avoids averaging
+across command jumps. Every input discontinuity must have a trajectory row;
+the function cannot reconstruct an unrecorded event. Terminal input values are
+ignored because they describe no subsequent interval.
+
+All trajectories run five seconds at 5 ms controller timing, with 1 ms and 0.5 ms
+plant steps. Maximum absolute residual across the 36 cases is **0.000109 J**;
+halving the plant step reduces each residual to less than 30% of its coarse value.
+CI checks a 1 mJ residual limit and refinement. In the hot-winding case at 0.5 ms,
+the derived controller draws 932.66 J and the optimized controller draws 963.51 J.
+These controllers do not follow exactly identical speed trajectories, so this is
+an energy comparison for the stated task, not a motor-efficiency ranking.
+
+The suite now has 22 standard-library tests and eight SciPy reference tests.
+Energy tests include loaded equilibrium, held-input jumps, free decay, refinement,
+and negative terminal power. Independent matrix-exponential trajectories verify
+conservation convergence separately from the RK4 implementation. The energy
+quadrature itself is shared, and the small residual validates numerical consistency
+of these equations rather than the motor's physical accuracy.
+
 ## Limits and next experiments
 
 The model omits brush friction, PWM switching, encoder noise, thermal dynamics,
@@ -172,7 +218,7 @@ stability proof. The three fixed held-out scenarios are a small generalization
 check. Rate/noise sensitivity has now been evaluated with frozen tuned gains;
 it is not an independent new validation set. No gains here are recommended for hardware.
 
-Next: explicit current constraints and energy accounting, multi-seed
+Next: physically meaningful current constraints, multi-seed
 optimization, and randomized parameter evaluation with uncertainty intervals.
 
 ## Open source and authorship

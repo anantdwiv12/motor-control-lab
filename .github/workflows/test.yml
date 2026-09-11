@@ -14,6 +14,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: python -m unittest -v
+      - run: python energy_experiment.py
   scipy-reference:
     runs-on: ubuntu-latest
     strategy:
